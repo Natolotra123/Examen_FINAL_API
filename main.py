@@ -17,3 +17,9 @@ def add_car(identifiant: str, brand: str, model: str):
 def get_cars():
     return cars
 
+@app.get("/cars/{id}")
+def get_car_id(id: str):
+    for car in cars:
+        if car["identifiant"] == id:
+            return car
+    return {"message": "Car n'éxiste pas"}
