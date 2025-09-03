@@ -1,0 +1,41 @@
+openapi: 3.0.3
+info:
+  titre: STD24218
+  description: This is a specification of STD24218
+  version: 1.0.0
+servers:
+  - url: http://localhost:8000
+paths:
+  /ping:
+    get:
+      summary: Retourne pong
+      responses:
+        '200':
+          description: succès
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: pong
+  /cars:
+    post:
+      summary: créer un nouveau car
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Car'
+      responses:
+        '201':
+          description: car créer
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  id:
+                    type: string
